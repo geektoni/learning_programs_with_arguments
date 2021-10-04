@@ -1,26 +1,17 @@
 # Learning compositional programs with arguments and sampling
 
-**Note: this code is not production ready and things might not work straight out
-of the box or they lack documentation. If you find any problems, feel free to open an issue here.**
-
 ## Project Description
 
-Giovanni De Toni ([giovanni.det@unitn.it](giovanni.detoni@unitn.it)),
-Luca Erculiani ([luca.erculiani@unitn.it](luca.erculiani@unitn.it)),
-Andrea Passerini ([andrea.passerini@unitn.it](andrea.passerini@unitn.it))
+One of the most challenging goals in designing intelligent systems is empowering them with the ability to synthesize programs from data. Namely, given specific requirements in the form of input/output pairs, the goal is to train a machine learning model to discover a program that satisfies those requirements.
+A recent class of methods exploits combinatorial search procedures and deep learning to learn compositional programs. However, they usually generate only toy programs using a domain-specific language that does not provide any high-level feature, such as function arguments, which reduces their applicability in real-world settings.
+We extend upon a state of the art model, AlphaNPI, by learning to generate functions that can accept arguments. This improvement will enable us to move closer to real computer programs.
+We showcase the potential of our approach by learning the Quicksort algorithm, showing how the ability to deal with arguments is crucial for learning and generalization.  
 
-We propose an architecture to perform neural synthesis of complex procedures by using deep reinforcement
-learning and execution traces. The execution traces are "recipes" which specify the sequence of operations needed
-to perform a certain algorithm. These traces are discovered automatically by using an Approximate Monte Carlo Tree Search (A-MCTS). Then, the network learns from these traces to execute a given algorithm. We use a deep reinforcement learning training procedure with sparse rewards.  
-
-We use a basis a previous paper by Pierrot et al. "Learning Compositional Neural Programs with Recursive Tree Search and Planning" (https://arxiv.org/abs/1905.12941).
-
-In our work, we try to extend this concept to learn the "function-arguments" tuple rather just which function needs to be called next. This way we will have something which resembles more closely a real computer program. To test our approach we focused mostly on sorting algorithms, namely the QuickSort procedure.  
+We use a basis the code of a previous paper by Pierrot et al. "Learning Compositional Neural Programs with Recursive Tree Search and Planning" (https://arxiv.org/abs/1905.12941).
 
 ## Directory Structure
 
 The project is structured as follow:
-* **cluster**: it contains several scripts to launch multiple experiments on a HPC cluster using the `qsub` command.
 * **core**: it contains core classes which shows the underlying working principles. For instance, we have the implementation
 of the MCTS procedure, the `Trainer` class used during training, etc.
 * **environments**: it contains the implementation of the various environments used for training;
